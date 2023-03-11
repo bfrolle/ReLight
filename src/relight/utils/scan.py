@@ -62,5 +62,6 @@ def find_workspace_layer(
     layer_suffix: Union[None, str, List[str]] = None,
 ) -> Tuple[str, ...]:
     return tuple(
-        layer for layer in nuke.layers() if filter_predicate(layer, layer_prefix, layer_suffix)
+        layer for layer in nuke.layers() 
+        if filter_predicate(layer, layer_prefix, layer_suffix)
     )
