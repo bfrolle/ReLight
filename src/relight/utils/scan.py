@@ -3,7 +3,7 @@ from typing import Dict, List, Tuple, Union
 import nuke
 
 
-def filter(
+def filter_ps(
     name: str,
     prefix: Union[None, str, List[str]],
     suffix: Union[None, str, List[str]] = None,
@@ -43,7 +43,7 @@ def find_workspace_nodes(
     nodescan = (
         node
         for node in nuke.allNodes()
-        if filter(node.name(), node_prefix, node_suffix)
+        if filter_ps(node.name(), node_prefix, node_suffix)
     )
     workspace_nodes = {}
     try:
@@ -62,5 +62,5 @@ def find_workspace_layer(
     layer_suffix: Union[None, str, List[str]] = None,
 ) -> Tuple[str, ...]:
     return tuple(
-        layer for layer in nuke.layers() if filter(layer, layer_prefix, layer_suffix)
+        layer for layer in nuke.layers() if filter_ps(layer, layer_prefix, layer_suffix)
     )

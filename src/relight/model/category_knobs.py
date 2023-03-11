@@ -69,6 +69,6 @@ def reset(root: nuke.Node, with_prefix: Tuple[str, ...]) -> None:
     rm.extend(COLLOR_COORECT_CAT)
     rm.extend(COLLOR_CORRECT_KNOBS)
     rm.extend(COLLOR_CORRECT_RANGES)
-    knobs = (kn for kn in root.allKnobs() if scan.filter(kn.name(), rm))
+    knobs = (kn for kn in root.allKnobs() if scan.filter_ps(kn.name(), rm))
     for kn_ in knobs:
         root.removeKnob(kn_)
