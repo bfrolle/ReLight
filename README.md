@@ -1,6 +1,6 @@
 ## Usage
 
-Press `Tab`, search for the **`piRelight`** node and the node to your node graph. The node itself is a `Group` node. The tool scans for light categories within existing layers. All layers with a 
+Press `Tab`, search for the **`piRelight`** node and add the node to your node graph. The node itself is a `Group` node. The tool scans for light categories within existing layers. All layers with a 
 - `Light`
 - `light` 
 - or `LIGHT`
