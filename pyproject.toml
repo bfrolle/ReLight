@@ -1,0 +1,77 @@
+[tool.poetry]
+name = "relight"
+version = "0.1.0"
+description = "Nuke Relight plug-in"
+authors = ["Bernhard Rolle <bfrolle@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "relight", from = "src" },
+    { include = "relight_manager.py", from = "src" },
+    { include = "relight_node.py", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.7.2,<3.8"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+pylint = "^2.17.0"
+pytest = "^7.2.2"
+pytest-cov = "^4.0.0"
+pytest-mock = "^3.10.0"
+
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.coverage.run]
+branch = false
+source = ["src"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 50
+
+[tool.black]
+line-length = 88
+target-version = ['py37']
+include = '\.pyi?$'
+# 'extend-exclude' excludes files or directories in addition to the defaults
+extend-exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.github
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | env
+  | build
+  | dist
+)/
+''' 
+
+[tool.pylint]
+max-line-length = 88
+disable = [
+    "C0103", # (invalid-name)
+    "C0114", # (missing-module-docstring)
+    "C0115", # (missing-class-docstring)
+    "C0116", # (missing-function-docstring)
+    "R0903", # (too-few-public-methods)
+    "R0913", # (too-many-arguments)
+    "W0105", # (pointless-string-statement)
+    "W0212", # (protected-access)
+    "W0622", # (redefined-builtin)
+]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
